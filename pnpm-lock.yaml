@@ -77,7 +77,7 @@ importers:
 
   packages/lint-config: {}
 
-  packages/logging system:
+  packages/logging-system:
     devDependencies:
       '@types/crypto-js':
         specifier: ^4.2.2
