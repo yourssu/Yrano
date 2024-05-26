@@ -1,0 +1,45 @@
+{
+  "name": "@yourssu/logging-system-react",
+  "private": false,
+  "version": "1.0.0",
+  "description": "Yourssu Logging System for React",
+  "keywords": [
+    "yourssu",
+    "loggin system",
+    "react"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yourssu/YLS-Web.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "type": "module",
+  "types": "./dist/index.d.ts",
+  "main": "./dist/index.cjs.js",
+  "module": "./dist/index.es.js",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.es.js",
+      "require": "./dist/index.cjs.js"
+    }
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "preview": "vite preview"
+  },
+  "peerDependencies": {
+    "axios": "^1.6.4",
+    "react-router-dom": "^6.21.3"
+  },
+  "devDependencies": {
+    "@types/crypto-js": "^4.2.2",
+    "@types/react-router-dom": "^5.3.3",
+    "axios": "^1.6.4",
+    "crypto-js": "^4.2.0",
+    "react-router-dom": "^6.21.3"
+  }
+}

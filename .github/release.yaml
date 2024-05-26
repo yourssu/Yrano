@@ -1,0 +1,39 @@
+# 이 파일은 release note 작성에 사용되는 파일입니다.
+
+changelog:
+  name-template: '@yourssu/yrano@$RESOLVED_VERSION'
+  tag-template: 'v$RESOLVED_VERSION'
+  categories:
+    - title: '🆕 Exciting New Features!'
+      labels:
+        - 'feat'
+    - title: '🐞 Fixed a Bug'
+      labels:
+        - 'bug'
+        - 'fix'
+    - title: '🫶🏻 Improve User Experience'
+      labels:
+        - 'docs'
+    - title: '🛠️ Strive for Better Code'
+      labels:
+        - 'refactor'
+    - title: '👩🏻‍💻 ETC'
+      labels:
+        - '*'
+  change-template: '- $TITLE (#$NUMBER) by @$AUTHOR'
+  change-title-escapes: '\<*_&#@`'
+  exclude-labels:
+    - 'Main'
+  version-resolver:
+    major:
+      labels:
+        - 'Major'
+    minor:
+      labels:
+        - 'Minor'
+    patch:
+      labels:
+        - 'Patch'
+    default: patch
+  template: |
+    $CHANGES
