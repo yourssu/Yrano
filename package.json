@@ -9,11 +9,12 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build",
+    "build": "pnpm -r run build",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0 --fix",
     "lint-staged": "lint-staged",
     "prepublishOnly": "npm run build",
     "preview": "vite preview",
+    "ci:version": "changeset version",
     "ci:publish": "pnpm publish -r",
     "logging-system": "pnpm --filter @yourssu/logging-system-react",
     "utils": "pnpm --filter @yourssu/utils",

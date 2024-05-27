@@ -10,6 +10,7 @@ export default defineConfig({
     react(),
     dts({
       insertTypesEntry: true,
+      outDir: path.resolve(__dirname, 'dist/types'),
     }),
     tsconfigPaths({
       projects: [path.resolve(__dirname, 'tsconfig.json')],
@@ -17,7 +18,7 @@ export default defineConfig({
   ],
   build: {
     lib: {
-      entry: path.resolve(__dirname, 'src/index.ts'),
+      entry: path.resolve(__dirname, './src/index.ts'),
       name: '@yourssu/logging-system-react',
       formats: ['es', 'cjs'],
       fileName: (format) => `index.${format}.js`,
