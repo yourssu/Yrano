@@ -20,7 +20,7 @@
     "ci:publish": "pnpm publish -r",
     "logging-system": "pnpm --filter @yourssu/logging-system-react",
     "utils": "pnpm --filter @yourssu/utils",
-    "lint-config": "pnpm --filter @yourssu/lint-config",
+    "eslint-config": "pnpm --filter @yourssu/eslint-config",
     "prepare": "husky"
   },
   "lint-staged": {
