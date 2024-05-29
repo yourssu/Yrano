@@ -6,4 +6,4 @@
  *          그렇지 않으면 false를 반환합니다.
  */
 export const hasOnlyNumberAndEnglishAndHangul = (value: string) =>
-  /^[ㄱ-힣a-zA-Z0-9]*$/.test(value);
+  /^[ㄱ-ㅎ가-힣a-zA-Z0-9]*$/.test(value);
