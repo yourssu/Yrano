@@ -20,3 +20,4 @@ console.log(hasOnlyEnglishAndHangul('안녕하세요')); // true
 console.log(hasOnlyEnglishAndHangul('123')); // true
 console.log(hasOnlyEnglishAndHangul('Hello123안녕하세요')); // true
 console.log(hasOnlyEnglishAndHangul('@#$%')); // false
+```

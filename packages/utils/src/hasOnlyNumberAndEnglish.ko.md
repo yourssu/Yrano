@@ -20,3 +20,4 @@ console.log(hasOnlyNumberAndEnglish('123')); // true
 console.log(hasOnlyNumberAndEnglish('Hello')); // true
 console.log(hasOnlyNumberAndEnglish('Hello123!')); // false
 console.log(hasOnlyNumberAndEnglish('@#$%')); // false
+```
