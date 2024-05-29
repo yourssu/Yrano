@@ -13,8 +13,6 @@
 ## Example
 
 ```typescript
-import { hasOnlyNumberAndEnglish } from './utils';
-
 console.log(hasOnlyNumberAndEnglish('Hello123')); // true
 console.log(hasOnlyNumberAndEnglish('123')); // true
 console.log(hasOnlyNumberAndEnglish('Hello')); // true

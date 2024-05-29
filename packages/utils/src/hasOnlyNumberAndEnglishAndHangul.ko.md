@@ -1,4 +1,4 @@
-# hasOnlyEnglishAndHangul
+# hasOnlyNumberAndEnglishAndHangul
 
 주어진 문자열이 오직 영어 알파벳(대문자 및 소문자), 한글(자모 및 음절), 숫자로만 구성되어 있는지 확인하는 함수입니다.
 
@@ -13,11 +13,9 @@
 ## Example
 
 ```typescript
-import { hasOnlyEnglishAndHangul } from './utils';
-
-console.log(hasOnlyEnglishAndHangul('Hello123')); // true
-console.log(hasOnlyEnglishAndHangul('안녕하세요')); // true
-console.log(hasOnlyEnglishAndHangul('123')); // true
-console.log(hasOnlyEnglishAndHangul('Hello123안녕하세요')); // true
-console.log(hasOnlyEnglishAndHangul('@#$%')); // false
+console.log(hasOnlyNumberAndEnglishAndHangul('Hello123')); // true
+console.log(hasOnlyNumberAndEnglishAndHangul('안녕하세요')); // true
+console.log(hasOnlyNumberAndEnglishAndHangul('123')); // true
+console.log(hasOnlyNumberAndEnglishAndHangul('Hello123안녕하세요')); // true
+console.log(hasOnlyNumberAndEnglishAndHangul('@#$%')); // false
 ```
