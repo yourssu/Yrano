@@ -26,3 +26,6 @@ dist-ssr
 
 # Output of 'npm pack'
 *.tgz
+
+# Turborepo
+.turbo
