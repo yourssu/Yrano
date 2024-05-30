@@ -21,6 +21,7 @@
     "logging-system": "pnpm --filter @yourssu/logging-system-react",
     "utils": "pnpm --filter @yourssu/utils",
     "eslint-config": "pnpm --filter @yourssu/eslint-config",
+    "prettier-config": "pnpm --filter @yourssu/prettier-config",
     "prepare": "husky"
   },
   "lint-staged": {
