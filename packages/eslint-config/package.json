@@ -1,8 +1,20 @@
 {
   "name": "@yourssu/eslint-config",
-  "main": "./dist/index.cjs",
-  "private": false,
   "version": "0.1.0",
+  "description": "Yourssu Eslint Config",
+  "main": "index.js",
+  "license": "MIT",
+  "repository": {
+    "url": "https://github.com/yourssu/Yrano.git",
+    "type": "git",
+    "directory": "packages/eslint-config"
+  },
+  "keywords": [
+    "yourssu",
+    "eslint",
+    "eslint-config"
+  ],
+  "private": false,
   "dependencies": {
     "@rushstack/eslint-config": "^3.6.10",
     "@rushstack/eslint-patch": "1.10.1",
