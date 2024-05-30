@@ -4,8 +4,8 @@ module.exports = {
   plugins: ['no-relative-import-paths'],
   extends: [
     '@rushstack/eslint-config/profile/web-app',
-    'plugin:prettier/recommended',
     'eslint:recommended',
+    'plugin:prettier/recommended',
   ],
   rules: {
     // 개행 방식 auto로 설정
