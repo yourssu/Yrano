@@ -21,7 +21,9 @@
     "utils": "pnpm --filter @yourssu/utils",
     "eslint-config": "pnpm --filter @yourssu/eslint-config",
     "prettier-config": "pnpm --filter @yourssu/prettier-config",
-    "prepare": "husky"
+    "prepare": "husky",
+    "test": "vitest",
+    "test:ui": "vitest --ui"
   },
   "lint-staged": {
     "src/**/*.{js, jsx, ts, tsx}": [
@@ -38,8 +40,10 @@
     "@types/react": "^18.2.15",
     "@types/react-dom": "^18.2.7",
     "@vitejs/plugin-react-swc": "^3.3.2",
+    "@vitest/ui": "^1.6.0",
     "eslint": "^8.45.0",
     "husky": "^9.0.11",
+    "jsdom": "^24.1.0",
     "lint-staged": "^15.2.5",
     "prettier": "^3.0.3",
     "react": "^18.2.0",
@@ -48,6 +52,7 @@
     "vite": "^4.4.5",
     "vite-plugin-dts": "^3.5.3",
     "vite-tsconfig-paths": "^4.2.0",
+    "vitest": "^1.6.0",
     "xmldom": "^0.6.0"
   }
 }
