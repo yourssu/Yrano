@@ -1,0 +1,14 @@
+{
+  "name": "@yourssu/demo",
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite"
+  },
+  "devDependencies": {
+    "@yourssu/logging-system-react": "workspace:*",
+    "react-router-dom": "^6.21.3",
+    "vite": "^4.4.5",
+    "vite-plugin-dts": "^3.5.3"
+  }
+}

@@ -1,7 +1,8 @@
 {
   "name": "@yourssu/yrano",
-  "packageManager": "pnpm@8.15.4",
+  "packageManager": "pnpm@8.9.0",
   "workspaces": [
+    "apps/*",
     "packages/*"
   ],
   "repository": {
@@ -9,14 +10,13 @@
     "url": "https://github.com/yourssu/Yrano"
   },
   "scripts": {
-    "dev": "vite",
-    "build": "pnpm -r run build",
-    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0 --fix",
+    "dev": "turbo dev",
+    "build": "turbo build",
+    "lint": "turbo lint",
     "lint-staged": "lint-staged",
-    "prepublishOnly": "npm run build",
-    "preview": "vite preview",
+    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "ci:version": "changeset version",
-    "ci:publish": "pnpm publish -r",
+    "ci:publish": "pnpm publish -r --access public",
     "logging-system": "pnpm --filter @yourssu/logging-system-react",
     "utils": "pnpm --filter @yourssu/utils",
     "eslint-config": "pnpm --filter @yourssu/eslint-config",
@@ -39,7 +39,6 @@
     "@changesets/cli": "^2.27.3",
     "@types/react": "^18.2.15",
     "@types/react-dom": "^18.2.7",
-    "@vitejs/plugin-react-swc": "^3.3.2",
     "@vitest/ui": "^1.6.0",
     "eslint": "^8.45.0",
     "husky": "^9.0.11",
@@ -48,11 +47,9 @@
     "prettier": "^3.0.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "tsup": "^8.0.2",
+    "turbo": "latest",
     "typescript": "^5.0.2",
-    "vite": "^4.4.5",
-    "vite-plugin-dts": "^3.5.3",
-    "vite-tsconfig-paths": "^4.2.0",
-    "vitest": "^1.6.0",
-    "xmldom": "^0.6.0"
+    "vitest": "^1.6.0"
   }
 }
