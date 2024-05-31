@@ -17,7 +17,6 @@
     "lint-staged": "lint-staged",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "ci:version": "changeset version",
-    "ci:publish": "pnpm publish -r --access public",
     "logging-system": "pnpm --filter @yourssu/logging-system-react",
     "utils": "pnpm --filter @yourssu/utils",
     "react": "pnpm --filter @yourssu/react",
