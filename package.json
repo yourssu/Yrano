@@ -20,6 +20,7 @@
     "ci:publish": "pnpm publish -r --access public",
     "logging-system": "pnpm --filter @yourssu/logging-system-react",
     "utils": "pnpm --filter @yourssu/utils",
+    "react": "pnpm --filter @yourssu/react",
     "prepare": "husky",
     "test": "vitest",
     "test:ui": "vitest --ui"
