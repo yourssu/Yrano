@@ -1,4 +1,4 @@
-import CryptoJS from 'crypto-js';
+import SHA256 from 'crypto-js/sha256';
 
 import { SetLocalStorage, SetLocalStorageClear } from './SetLocalStorage';
 import { postLog } from './apis/postLog';
@@ -29,7 +29,7 @@ const createHashedID = (userId: string) => {
     userId = createRandomId();
   }
 
-  hashedId = CryptoJS.SHA256(userId).toString(CryptoJS.enc.Base64);
+  hashedId = SHA256(userId).toString(CryptoJS.enc.Base64);
 
   return localHashedId ? localHashedId : hashedId;
 };

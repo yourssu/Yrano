@@ -1,5 +1,6 @@
-import { useYLSLogger } from '..';
 import { useEffect } from 'react';
+
+import { useYLSLogger } from '..';
 import { LogPayloadParams } from '../types/LogType';
 
 interface Props {
