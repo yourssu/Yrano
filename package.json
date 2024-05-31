@@ -8,7 +8,6 @@
     "type": "git",
     "url": "https://github.com/yourssu/Yrano"
   },
-  "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "pnpm -r run build",

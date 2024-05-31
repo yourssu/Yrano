@@ -1,6 +1,6 @@
 {
   "name": "@yourssu/prettier-config",
-  "main": "./dist/index.cjs",
+  "main": "index.js",
   "private": false,
   "version": "0.1.0",
   "peerDependencies": {
