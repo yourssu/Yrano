@@ -8,12 +8,27 @@ YLS는 숭실대학교 동아리 유어슈에서 사용하는 로깅 시스템�
 
 ## Installation
 
+1. YLS를 설치합니다.
+
 ```
 npm install @yourssu/logging-system-react
 
 yarn add @yourssu/logging-system-react
 
 pnpm install @yourssu/logging-system-react
+```
+
+2. Root Component에 YLSWrapper를 감싸고 baseURL을 설정합니다.
+
+```jsx
+// vite 사용 시
+const baseURL = import.meta.env.VITE_API_YLS_URL;
+
+ReactDOM.createRoot(document.getElementById('root')!).render(
+  <YLSWrapper baseURL={baseURL}>
+    <App />
+  </YLSWrapper>
+);
 ```
 
 ## Usage
