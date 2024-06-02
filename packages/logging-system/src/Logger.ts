@@ -1,8 +1,8 @@
-import SHA256 from 'crypto-js/sha256';
+import CryptoJS from 'crypto-js';
 
 import { SetLocalStorage, SetLocalStorageClear } from './SetLocalStorage';
-import { postLog } from './apis/postLog';
-import { LogPayloadParams, LogRequestList, LogType } from './types/LogType';
+import { useYLSContext } from './hooks/useYLSContext';
+import { LogPayloadParams, LogRequestList, LogResponse, LogType } from './types/LogType';
 
 const createRandomId = () => {
   let randomId = '';
@@ -29,7 +29,7 @@ const createHashedID = (userId: string) => {
     userId = createRandomId();
   }
 
-  hashedId = SHA256(userId).toString(CryptoJS.enc.Base64);
+  hashedId = CryptoJS.SHA256(userId).toString(CryptoJS.enc.Base64);
 
   return localHashedId ? localHashedId : hashedId;
 };
@@ -40,7 +40,12 @@ const createTimestamp = () => {
   return now.toISOString();
 };
 
-const initialLog = (userId: string, version: number, event: LogPayloadParams['event']) => {
+const initialLog = (
+  userId: string,
+  version: number,
+  event: LogPayloadParams['event'],
+  postLog: (data: LogRequestList) => Promise<LogResponse>
+) => {
   const loggerType: LogPayloadParams = {
     userId: userId,
     version: version,
@@ -49,16 +54,18 @@ const initialLog = (userId: string, version: number, event: LogPayloadParams['ev
 
   const logger = Logger(loggerType);
 
-  SetLocalStorage(logger);
+  SetLocalStorage(logger, postLog);
 };
 
 export const useYLSLogger = () => {
+  const { postLog } = useYLSContext();
+
   const screen = ({ userId, version, event }: LogPayloadParams) => {
-    initialLog(userId, version, event);
+    initialLog(userId, version, event, postLog);
   };
 
   const click = ({ userId, version, event }: LogPayloadParams) => {
-    initialLog(userId, version, event);
+    initialLog(userId, version, event, postLog);
   };
 
   return {
@@ -82,12 +89,18 @@ export const Logger = ({ userId, version, event }: LogPayloadParams) => {
 window.addEventListener('unload', async (event) => {
   event.preventDefault();
 
+  const { postLog } = useYLSContext();
   const logList: LogType[] = JSON.parse(localStorage.getItem('yls-web') as string) || [];
   const req: LogRequestList = {
     logRequestList: logList,
   };
-  const res = await postLog(req);
-  if (res.success) {
-    SetLocalStorageClear();
+
+  try {
+    const res = await postLog(req);
+    if (res.success) {
+      SetLocalStorageClear();
+    }
+  } catch (e) {
+    console.error('Failed to post log');
   }
 });
