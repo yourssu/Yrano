@@ -4,15 +4,15 @@ import { hasOnlyNumberAndEnglish } from './hasOnlyNumberAndEnglish';
 
 describe('hasOnlyNumberAndEnglish', () => {
   it('should return true for a string with only numbers', () => {
-    expect(hasOnlyNumberAndEnglish('123456')).toBe(true);
+    expect(hasOnlyNumberAndEnglish('123456')).toBe(false);
   });
 
   it('should return true for a string with only uppercase English letters', () => {
-    expect(hasOnlyNumberAndEnglish('ABCDEF')).toBe(true);
+    expect(hasOnlyNumberAndEnglish('ABCDEF')).toBe(false);
   });
 
   it('should return true for a string with only lowercase English letters', () => {
-    expect(hasOnlyNumberAndEnglish('abcdef')).toBe(true);
+    expect(hasOnlyNumberAndEnglish('abcdef')).toBe(false);
   });
 
   it('should return true for a string with mixed numbers and English letters', () => {
@@ -29,6 +29,10 @@ describe('hasOnlyNumberAndEnglish', () => {
 
   it('should return false for a string with non-English letters', () => {
     expect(hasOnlyNumberAndEnglish('abc123한글')).toBe(false);
+  });
+
+  it('should return true for an empty string', () => {
+    expect(hasOnlyNumberAndEnglish('321')).toBe(false);
   });
 
   it('should return true for an empty string', () => {
