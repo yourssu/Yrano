@@ -8,7 +8,7 @@ export default defineConfig({
     resolve: true,
   },
   external: ['react', 'react-dom'],
-  noExternal: ['crypto-js/sha256'],
+  noExternal: ['crypto-js'],
   splitting: false,
   clean: true,
   sourcemap: true,
