@@ -6,6 +6,7 @@
     "dev": "vite"
   },
   "devDependencies": {
+    "@vitejs/plugin-react": "^4.3.0",
     "@yourssu/logging-system-react": "workspace:*",
     "react-router-dom": "^6.21.3",
     "vite": "^4.4.5",
