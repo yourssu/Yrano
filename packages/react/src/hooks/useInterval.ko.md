@@ -19,7 +19,7 @@ const MyComponent = () => {
 };
 ```
 
-## Remarks
+## Notes
 이 훅은 내부적으로 두 개의 `useEffect`를 사용합니다:
 1. 첫 번째 `useEffect`는 콜백 함수를 최신 상태로 유지합니다.
 2. 두 번째 `useEffect`는 주어진 간격마다 콜백 함수를 실행하는 타이머를 설정합니다.

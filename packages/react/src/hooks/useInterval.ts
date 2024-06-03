@@ -10,17 +10,6 @@ interface UseIntervalProps {
  * @param {() => void} callback - 실행될 콜백 함수입니다.
  * @param {number} interval - 콜백 함수가 실행될 간격(밀리초)입니다.
  *
- * @example
- * ```jsx
- * const MyComponent = () => {
- *   useInterval(() => {
- *     console.log('This will run every second');
- *   }, 1000);
- *
- *   return <div>Check the console</div>;
- * };
- * ```
- *
  * @remarks
  * 이 훅은 내부적으로 두 개의 `useEffect`를 사용합니다:
  * 1. 첫 번째 `useEffect`는 콜백 함수를 최신 상태로 유지합니다.
