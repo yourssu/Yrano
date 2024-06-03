@@ -1,7 +1,7 @@
 import CryptoJS from 'crypto-js';
 
 import { SetLocalStorage, SetLocalStorageClear } from './SetLocalStorage';
-import { useYLSContext } from './hooks/useYLSContext';
+import { createAxiosInstance } from './apis/createAxiosInstance';
 import { LogPayloadParams, LogRequestList, LogResponse, LogType } from './types/LogType';
 
 const createRandomId = () => {
@@ -57,21 +57,23 @@ const initialLog = (
   SetLocalStorage(logger, postLog);
 };
 
-export const useYLSLogger = () => {
-  const { postLog } = useYLSContext();
+const postLog = async (data: LogRequestList): Promise<LogResponse> => {
+  try {
+    const baseUrl = window.YLS_CONFIG.baseURL;
+    const axiosInstance = createAxiosInstance(baseUrl);
+    const res = await axiosInstance.put('/log/list', data);
+    return res.data;
+  } catch (e) {
+    throw new Error('Failed to post log');
+  }
+};
 
-  const screen = ({ userId, version, event }: LogPayloadParams) => {
-    initialLog(userId, version, event, postLog);
-  };
+export const screen = ({ userId, version, event }: LogPayloadParams) => {
+  initialLog(userId, version, event, postLog);
+};
 
-  const click = ({ userId, version, event }: LogPayloadParams) => {
-    initialLog(userId, version, event, postLog);
-  };
-
-  return {
-    screen,
-    click,
-  };
+export const click = ({ userId, version, event }: LogPayloadParams) => {
+  initialLog(userId, version, event, postLog);
 };
 
 export const Logger = ({ userId, version, event }: LogPayloadParams) => {
@@ -89,7 +91,6 @@ export const Logger = ({ userId, version, event }: LogPayloadParams) => {
 window.addEventListener('unload', async (event) => {
   event.preventDefault();
 
-  const { postLog } = useYLSContext();
   const logList: LogType[] = JSON.parse(localStorage.getItem('yls-web') as string) || [];
   const req: LogRequestList = {
     logRequestList: logList,

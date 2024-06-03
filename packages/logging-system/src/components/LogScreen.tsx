@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 
-import { useYLSLogger } from '..';
+import { screen } from '@/Logger';
+
 import { LogPayloadParams } from '../types/LogType';
 
 interface Props {
@@ -9,10 +10,8 @@ interface Props {
 }
 
 export const LogScreen = ({ children, params }: Props) => {
-  const logger = useYLSLogger();
-
   useEffect(() => {
-    logger.screen({
+    screen({
       ...params,
     });
   }, []);

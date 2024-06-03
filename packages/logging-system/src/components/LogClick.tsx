@@ -1,6 +1,7 @@
 import { Children, cloneElement } from 'react';
 
-import { useYLSLogger } from '..';
+import { click } from '@/Logger';
+
 import { LogPayloadParams } from '../types/LogType';
 
 interface Props {
@@ -9,12 +10,11 @@ interface Props {
 }
 
 export const LogClick = ({ children, params }: Props) => {
-  const logger = useYLSLogger();
   const child = Children.only(children);
 
   return cloneElement(child, {
     onClick: (...args: unknown[]) => {
-      logger.click({
+      click({
         ...params,
       });
 
