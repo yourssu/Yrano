@@ -42,4 +42,8 @@ describe('hasNumberAndEnglishWithSymbols', () => {
   it('should return false for an empty string', () => {
     expect(hasNumberAndEnglishWithSymbols('')).toBe(false);
   });
+
+  it('should return false for a string with illegal special characters', () => {
+    expect(hasNumberAndEnglishWithSymbols('!!!')).toBe(false);
+  });
 });

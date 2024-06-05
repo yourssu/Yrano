@@ -19,4 +19,6 @@ console.log(hasNumberOrEnglishOrHangulOrSpace('안녕하세요')); // true
 console.log(hasNumberOrEnglishOrHangulOrSpace('123')); // true
 console.log(hasNumberOrEnglishOrHangulOrSpace('Hello123안녕하세요')); // true
 console.log(hasNumberOrEnglishOrHangulOrSpace('@#$%')); // false
+console.log(hasNumberOrEnglishOrHangulOrSpace('')); // false
+console.log(hasNumberOrEnglishOrHangulOrSpace(' ')); // true
 ```
