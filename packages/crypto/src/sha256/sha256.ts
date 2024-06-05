@@ -5,7 +5,7 @@ import { SHA256_INFO } from './sha256.type';
 export class SHA256 {
   private static readonly ENDIAN = Common.BIG_ENDIAN;
 
-  private static readonly SHA256_K: number[] = [
+  private static readonly SHA256_K: Int32Array = new Int32Array([
     0x428a2f98, 0x71374491, 0xb5c0fbcf, 0xe9b5dba5, 0x3956c25b, 0x59f111f1, 0x923f82a4, 0xab1c5ed5,
     0xd807aa98, 0x12835b01, 0x243185be, 0x550c7dc3, 0x72be5d74, 0x80deb1fe, 0x9bdc06a7, 0xc19bf174,
     0xe49b69c1, 0xefbe4786, 0x0fc19dc6, 0x240ca1cc, 0x2de92c6f, 0x4a7484aa, 0x5cb0a9dc, 0x76f988da,
@@ -14,7 +14,7 @@ export class SHA256 {
     0xa2bfe8a1, 0xa81a664b, 0xc24b8b70, 0xc76c51a3, 0xd192e819, 0xd6990624, 0xf40e3585, 0x106aa070,
     0x19a4c116, 0x1e376c08, 0x2748774c, 0x34b0bcb5, 0x391c0cb3, 0x4ed8aa4a, 0x5b9cca4f, 0x682e6ff3,
     0x748f82ee, 0x78a5636f, 0x84c87814, 0x8cc70208, 0x90befffa, 0xa4506ceb, 0xbef9a3f7, 0xc67178f2,
-  ];
+  ]);
 
   private static ROTR_ULONG(x: number, n: number): number {
     return Common.URShift(x, n) | (x << (32 - n));
@@ -66,7 +66,7 @@ export class SHA256 {
   private static abcdefgh_h = 7;
 
   private static FF(
-    abcdefgh: number[],
+    abcdefgh: Int32Array,
     a: number,
     b: number,
     c: number,
@@ -75,7 +75,7 @@ export class SHA256 {
     f: number,
     g: number,
     h: number,
-    X: number[],
+    X: Int32Array,
     j: number
   ): void {
     const T1 =
@@ -85,29 +85,31 @@ export class SHA256 {
       Common.intToUnsigned(this.SHA256_K[j]) +
       Common.intToUnsigned(X[j]);
     abcdefgh[d] += T1;
-    abcdefgh[h] =
+    abcdefgh[h] = Common.toInt32(
       T1 +
-      Common.intToUnsigned(this.Sigma0(abcdefgh[a])) +
-      Common.intToUnsigned(this.Maj(abcdefgh[a], abcdefgh[b], abcdefgh[c]));
+        Common.intToUnsigned(this.Sigma0(abcdefgh[a])) +
+        Common.intToUnsigned(this.Maj(abcdefgh[a], abcdefgh[b], abcdefgh[c]))
+    );
   }
 
   private static GetData(x: Uint8Array, x_offset: number): number {
     return Common.byte_to_int_single(x, x_offset, this.ENDIAN);
   }
 
-  private static SHA256_Transform(Message: Uint8Array, ChainVar: number[]): void {
-    const abcdefgh: number[] = new Array(8);
-    const X: number[] = new Array(64);
+  private static SHA256_Transform(Message: Uint8Array, ChainVar: Int32Array): void {
+    const abcdefgh: Int32Array = new Int32Array(8);
+    const X: Int32Array = new Int32Array(64);
     let j: number;
 
     for (j = 0; j < 16; j++) X[j] = this.GetData(Message, j * 4);
 
     for (j = 16; j < 64; j++)
-      X[j] =
+      X[j] = Common.toInt32(
         Common.intToUnsigned(this.RHO1(X[j - 2])) +
-        Common.intToUnsigned(X[j - 7]) +
-        Common.intToUnsigned(this.RHO0(X[j - 15])) +
-        Common.intToUnsigned(X[j - 16]);
+          Common.intToUnsigned(X[j - 7]) +
+          Common.intToUnsigned(this.RHO0(X[j - 15])) +
+          Common.intToUnsigned(X[j - 16])
+      );
 
     abcdefgh[this.abcdefgh_a] = ChainVar[0];
     abcdefgh[this.abcdefgh_b] = ChainVar[1];
@@ -251,27 +253,31 @@ export class SHA256 {
   public static SHA256_Process(info: SHA256_INFO, pszMessage: Uint8Array, uDataLen: number): void {
     let pszMessageOffset = info.remainNum;
 
+    // Update the length of the processed message in bits
     if ((info.uLowLength += uDataLen << 3) < 0) {
       info.uHighLength++;
     }
 
     info.uHighLength += Common.URShift(uDataLen, 29);
 
+    let offset = 0;
+
     while (uDataLen + pszMessageOffset >= SHA256_DIGEST_BLOCKLEN) {
       Common.arraycopy_offset(
         info.szBuffer,
         pszMessageOffset,
         pszMessage,
-        0,
-        SHA256_DIGEST_BLOCKLEN
+        offset,
+        SHA256_DIGEST_BLOCKLEN - pszMessageOffset
       );
       this.SHA256_Transform(info.szBuffer, info.uChainVar);
-      pszMessageOffset += SHA256_DIGEST_BLOCKLEN - pszMessageOffset;
+      offset += SHA256_DIGEST_BLOCKLEN - pszMessageOffset;
       uDataLen -= SHA256_DIGEST_BLOCKLEN - pszMessageOffset;
       pszMessageOffset = 0;
     }
 
-    Common.arraycopy_offset(info.szBuffer, pszMessageOffset, pszMessage, 0, uDataLen);
+    // Copy remaining data to buffer
+    Common.arraycopy_offset(info.szBuffer, pszMessageOffset, pszMessage, offset, uDataLen);
     info.remainNum = pszMessageOffset + uDataLen;
   }
 

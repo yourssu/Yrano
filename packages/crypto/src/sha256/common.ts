@@ -2,6 +2,10 @@ export class Common {
   public static readonly BIG_ENDIAN = 0;
   public static readonly LITTLE_ENDIAN = 1;
 
+  public static toInt32(n: number): number {
+    return n & 0xffffffff;
+  }
+
   public static arraycopy_offset(
     dst: Uint8Array,
     dst_offset: number,
@@ -79,6 +83,7 @@ export class Common {
   public static readonly INT_RANGE_MAX = Math.pow(2, 32);
 
   public static intToUnsigned(x: number): number {
+    if (x != Common.toInt32(x)) console.log('intToUnsigned: ' + x);
     return x >= 0 ? x : x + this.INT_RANGE_MAX;
   }
 }
