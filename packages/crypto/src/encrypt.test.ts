@@ -14,8 +14,10 @@ describe('encrypt', () => {
   });
 
   it('should return the correct hash for a string with numbers', () => {
-    expect(encrypt('안녕하세요')).toBe(
-      '2c68318e352971113645cbc72861e1ec23f48d5baa5f9b405fed9dddca893eb4'
-    );
+    expect(
+      encrypt(
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
+      )
+    ).toBe('2d8c2f6d978ca21712b5f6de36c9d31fa8e96a4fa5d8ff8b0188dfb9e7c171bb');
   });
 });
