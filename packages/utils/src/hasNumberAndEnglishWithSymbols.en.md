@@ -22,3 +22,4 @@ console.log(hasNumberOrEnglishOrHangulOrSpace('Hello123안녕하세요')); // tr
 console.log(hasNumberOrEnglishOrHangulOrSpace('@#$%')); // false
 console.log(hasNumberOrEnglishOrHangulOrSpace('')); // false
 console.log(hasNumberOrEnglishOrHangulOrSpace(' ')); // true
+```
