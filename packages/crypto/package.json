@@ -32,5 +32,9 @@
   "scripts": {
     "build": "tsc && tsup",
     "test": "vitest"
+  },
+  "devDependencies": {
+    "@types/crypto-js": "^4.2.2",
+    "crypto-js": "^4.2.0"
   }
 }
