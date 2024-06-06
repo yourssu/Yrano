@@ -1,22 +1,19 @@
 {
-  "name": "@yourssu/utils",
+  "name": "@yourssu/react",
   "private": false,
-  "version": "0.2.1",
-  "description": "Yourssu Utils Package",
+  "version": "0.1.0",
+  "description": "Yourssu React Package",
   "keywords": [
     "yourssu",
-    "utils"
+    "react"
   ],
   "repository": {
     "type": "git",
     "url": "https://github.com/yourssu/Yrano",
-    "directory": "packages/utils"
+    "directory": "packages/react"
   },
   "license": "MIT",
   "type": "module",
-  "files": [
-    "dist"
-  ],
   "types": "./dist/index.d.ts",
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",
@@ -32,11 +29,11 @@
       }
     }
   },
-  "publishConfig": {
-    "access": "public"
-  },
   "scripts": {
     "build": "tsc && tsup",
     "test": "vitest"
+  },
+  "devDependencies": {
+    "@testing-library/react": "^15.0.7"
   }
 }

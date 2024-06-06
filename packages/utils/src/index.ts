@@ -1,2 +1,2 @@
-export { hasOnlyNumberAndEnglish } from './hasOnlyNumberAndEnglish';
-export { hasOnlyNumberAndEnglishAndHangul } from './hasOnlyNumberAndEnglishAndHangul.ts';
+export { hasNumberAndEnglishWithSymbols } from './hasNumberAndEnglishWithSymbols.ts';
+export { hasNumberOrEnglishOrHangulOrSpace } from './hasNumberOrEnglishOrHangulOrSpace.ts';

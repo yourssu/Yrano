@@ -1,12 +1,14 @@
-import { postLog } from './apis/postLog';
-import { LogRequestList, LogType } from './types/LogType';
+import { LogRequestList, LogResponse, LogType } from './types/LogType';
 
 export const SetLocalStorageClear = () => {
   const list: any[] = [];
   localStorage.setItem('yls-web', JSON.stringify(list));
 };
 
-export const SetLocalStorage = async (logger: LogType) => {
+export const SetLocalStorage = async (
+  logger: LogType,
+  postLog: (data: LogRequestList) => Promise<LogResponse>
+) => {
   if (window.localStorage.getItem('yls-web') == undefined) {
     const list: any[] = [];
     list.push(logger);
@@ -20,10 +22,14 @@ export const SetLocalStorage = async (logger: LogType) => {
       const req: LogRequestList = {
         logRequestList: remainList,
       };
-      const res = await postLog(req);
 
-      if (res.success) {
-        SetLocalStorageClear();
+      try {
+        const res = await postLog(req);
+        if (res.success) {
+          SetLocalStorageClear();
+        }
+      } catch (e) {
+        console.error('Failed to post log');
       }
     }
   }

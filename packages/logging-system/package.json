@@ -1,7 +1,7 @@
 {
   "name": "@yourssu/logging-system-react",
   "private": false,
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Yourssu Logging System for React",
   "keywords": [
     "yourssu",
@@ -15,6 +15,9 @@
   },
   "license": "MIT",
   "type": "module",
+  "files": [
+    "dist"
+  ],
   "types": "./dist/index.d.ts",
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",
@@ -29,6 +32,9 @@
         "default": "./dist/index.cjs"
       }
     }
+  },
+  "publishConfig": {
+    "access": "public"
   },
   "scripts": {
     "build": "tsc && tsup"
