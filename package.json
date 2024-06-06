@@ -21,6 +21,7 @@
     "react": "pnpm --filter @yourssu/react",
     "eslint-config": "pnpm --filter @yourssu/eslint-config",
     "prettier-config": "pnpm --filter @yourssu/prettier-config",
+    "example": "pnpm --filter example",
     "prepare": "husky",
     "test": "vitest",
     "test:ui": "vitest --ui"
@@ -51,5 +52,11 @@
     "turbo": "latest",
     "typescript": "^5.0.2",
     "vitest": "^1.6.0"
+  },
+  "pnpm": {
+    "overrides": {
+      "@typescript-eslint/eslint-plugin": "7.5.0",
+      "@typescript-eslint/parser": "7.5.0"
+    }
   }
 }
