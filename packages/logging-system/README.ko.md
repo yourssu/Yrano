@@ -1,16 +1,16 @@
-## What is YLS?
+## YLS란
 
-YLS is a logging system used by the Yourssu club at Soongsil University.
+YLS는 숭실대학교 동아리 유어슈에서 사용하는 로깅 시스템입니다.
 
-User logs are stored in localStorage, and when 10 logs accumulate or when the user exits, the logs are sent to the backend via an API call.
+사용자의 로그는 local storage에 담기며, 로그가 10개 쌓였을 경우/사용자가 이탈할 경우 백엔드 API를 호출해 로그를 전송합니다.
 
-The user's userId is handled as an unidentifiable value within YLS.
+사용자의 userId는 YLS 내에서 식별 불가능 한 값으로 처리됩니다.
 
 ## Installation
 
-1. Install YLS.
+1. YLS를 설치합니다.
 
-```bash
+```
 npm install @yourssu/logging-system-react
 
 yarn add @yourssu/logging-system-react
@@ -18,10 +18,10 @@ yarn add @yourssu/logging-system-react
 pnpm install @yourssu/logging-system-react
 ```
 
-2. Wrap the Root Component with YLSWrapper and set the baseURL.
+2. Root Component에 YLSWrapper를 감싸고 baseURL을 설정합니다.
 
 ```jsx
-// When using vite
+// vite 사용 시
 const baseURL = import.meta.env.VITE_API_YLS_URL;
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
@@ -33,17 +33,17 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
 
 ## Usage
 
-YLS handles the timestamp and platform internally.
+YLS 내부에서는 timestamp와 platform을 처리합니다.
 
-The userId must be provided from the usage site, and the fields inside version and event must be filled with values provided by the PM.
+userId는 사용처에서 넣어주어야 하며, version과 event 내부 필드는 PM으로부터 전달받은 값을 넣어주어야 합니다.
 
-## LogScreen
+### LogScreen
 
-Tracks the screen that users enter.
+사용자가 진입한 화면을 추적합니다.
 
-## LogClick
+### LogClick
 
-Tracks the user's clicks (events).
+사용자의 클릭(이벤트)를 추적합니다.
 
 ```jsx
 export const Home = () => {
@@ -80,11 +80,11 @@ export const Home = () => {
 };
 ```
 
-## Products using YLS
+## YLS를 사용하는 프로덕트
 
 [Soomsil-Web](https://github.com/yourssu/Soomsil-Web)
 
-## Other versions repositories
+## 타 버전 저장소
 
 [YLS-Android](https://github.com/yourssu/YLS-Android)
 
