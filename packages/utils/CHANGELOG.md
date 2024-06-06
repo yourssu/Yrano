@@ -4,7 +4,7 @@
 
 ### Patch Changes
 
-- 5b3b994: create context for using baseURL
+- 5b3b994: setting files in package.json
 
 ## 0.2.0
 
