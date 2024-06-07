@@ -2,6 +2,7 @@
   "name": "@yourssu/react",
   "private": false,
   "version": "0.1.0",
+  "sideEffects": false,
   "description": "Yourssu React Package",
   "keywords": [
     "yourssu",
