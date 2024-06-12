@@ -11,6 +11,7 @@ export function base64Encode(data: string): string {
   if (bins.length % 6 !== 0) {
     bins += '0'.repeat(6 - (bins.length % 6));
   }
+
   let idx: number = 0;
   let ret: string = '';
 

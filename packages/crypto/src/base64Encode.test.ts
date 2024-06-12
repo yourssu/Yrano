@@ -9,6 +9,7 @@ describe('base64Encode', () => {
       CryptoJS.enc.Base64.stringify(CryptoJS.enc.Utf8.parse('hello world')).toString()
     );
   });
+
   it('should encode a very long string to base64', () => {
     expect(
       base64Encode(
