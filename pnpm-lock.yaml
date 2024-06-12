@@ -99,6 +99,15 @@ importers:
         specifier: ^3.5.3
         version: 3.9.1(typescript@5.4.5)(vite@4.5.3)
 
+  packages/crypto:
+    devDependencies:
+      '@types/crypto-js':
+        specifier: ^4.2.2
+        version: 4.2.2
+      crypto-js:
+        specifier: ^4.2.0
+        version: 4.2.0
+
   packages/logging-system:
     devDependencies:
       '@types/crypto-js':

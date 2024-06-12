@@ -1,0 +1,2 @@
+export const SHA256_DIGEST_BLOCKLEN = 64;
+export const SHA256_DIGEST_VALUELEN = 32;
