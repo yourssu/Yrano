@@ -1,6 +1,6 @@
 import { SHA256 } from './sha256/sha256';
 
-export function encrypt(data: string): string {
+export function sha256(data: string): string {
   const dataBytes = new TextEncoder().encode(data);
 
   // Create an array to hold the hash
