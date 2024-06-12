@@ -47,7 +47,7 @@
     "@types/crypto-js": "^4.2.2",
     "@types/react-router-dom": "^5.3.3",
     "axios": "^1.6.4",
-    "crypto-js": "^4.2.0",
+    "@yourssu/crypto": "workspace:*",
     "react-router-dom": "^6.21.3"
   }
 }

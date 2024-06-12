@@ -1,4 +1,4 @@
-import CryptoJS from 'crypto-js';
+import { sha256, base64Encode } from '@yourssu/crypto';
 
 import { SetLocalStorage, SetLocalStorageClear } from './SetLocalStorage';
 import { useYLSContext } from './hooks/useYLSContext';
@@ -27,9 +27,11 @@ const createHashedID = (userId: string) => {
     localHashedId = JSON.parse(window.localStorage.getItem('yls-web') as string).hashedId;
   } else if (userId === '') {
     userId = createRandomId();
+  } else {
+    // do nothing
   }
 
-  hashedId = CryptoJS.SHA256(userId).toString(CryptoJS.enc.Base64);
+  hashedId = base64Encode(sha256(userId).toString());
 
   return localHashedId ? localHashedId : hashedId;
 };
