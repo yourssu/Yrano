@@ -2,6 +2,7 @@ import CryptoJS from 'crypto-js';
 import { describe, it, expect } from 'vitest';
 
 import { base64Encode } from './base64Encode';
+import { hexToUtf8 } from './hexToUtf8.ts';
 import { sha256 } from './sha256';
 
 describe('base64Encode', () => {
@@ -26,16 +27,14 @@ describe('base64Encode', () => {
   });
 
   it('should encode an empty sha256 hash value to base64', () => {
-    expect(base64Encode(sha256(''))).toBe(
+    expect(base64Encode(hexToUtf8(sha256('')))).toBe(
       CryptoJS.enc.Base64.stringify(CryptoJS.SHA256('')).toString()
     );
   });
 
   it('should encode a sha256 hash value to base64', () => {
-    expect(base64Encode('9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08')).toBe(
-      CryptoJS.enc.Base64.stringify(
-        CryptoJS.SHA256('9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08')
-      ).toString()
+    expect(base64Encode(hexToUtf8(sha256('test')))).toBe(
+      CryptoJS.enc.Base64.stringify(CryptoJS.SHA256('test')).toString()
     );
   });
 });
