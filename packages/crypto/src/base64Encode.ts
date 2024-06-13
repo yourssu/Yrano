@@ -23,5 +23,6 @@ export function base64Encode(data: string): string {
   if (ret.length % 4 !== 0) {
     ret += '='.repeat(4 - (ret.length % 4));
   }
+
   return ret;
 }
