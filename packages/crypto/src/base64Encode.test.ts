@@ -28,13 +28,13 @@ describe('base64Encode', () => {
 
   it('should encode an empty sha256 hash value to base64', () => {
     expect(base64Encode(hexToUtf8(sha256('')))).toBe(
-      CryptoJS.enc.Base64.stringify(CryptoJS.SHA256('')).toString()
+      CryptoJS.SHA256('').toString(CryptoJS.enc.Base64)
     );
   });
 
   it('should encode a sha256 hash value to base64', () => {
     expect(base64Encode(hexToUtf8(sha256('test')))).toBe(
-      CryptoJS.enc.Base64.stringify(CryptoJS.SHA256('test')).toString()
+      CryptoJS.SHA256('test').toString(CryptoJS.enc.Base64)
     );
   });
 });
