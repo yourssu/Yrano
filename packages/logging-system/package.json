@@ -44,7 +44,6 @@
     "react-router-dom": "^6.21.3"
   },
   "devDependencies": {
-    "@types/crypto-js": "^4.2.2",
     "@types/react-router-dom": "^5.3.3",
     "axios": "^1.6.4",
     "@yourssu/crypto": "workspace:*",
