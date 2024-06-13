@@ -10,11 +10,7 @@
 ## API
 
 ```ts
-hexToUtf8(hex
-:
-string
-):
-string;
+hexToUtf8(hex: string): string;
 ```
 
 ### Parameters
@@ -30,5 +26,6 @@ string;
 ```ts
 const hexString = '74657374';
 const utf8String = hexToUtf8(hexString);
-console.log('UTF-8 String:', utf8String); 
+
+console.log('UTF-8 String:', utf8String);
 ```
