@@ -23,10 +23,12 @@ const createHashedID = (userId: string) => {
   let localHashedId = '';
   const existLocalHashedId = window.localStorage.getItem('yls-web');
 
-  if (userId === '' && existLocalHashedId) {
-    localHashedId = JSON.parse(window.localStorage.getItem('yls-web') as string).hashedId;
-  } else if (userId === '') {
-    userId = createRandomId();
+  if (userId === '') {
+    if (existLocalHashedId) {
+      localHashedId = JSON.parse(window.localStorage.getItem('yls-web') as string).hashedId;
+    } else {
+      userId = createRandomId();
+    }
   }
 
   hashedId = base64Encode(hexToUtf8(sha256(userId)));
