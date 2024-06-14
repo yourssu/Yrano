@@ -1,8 +1,19 @@
 {
   "name": "@yourssu/prettier-config",
-  "main": "index.js",
-  "private": false,
   "version": "0.1.0",
+  "description": "Yourssu Prettier Config",
+  "main": "index.js",
+  "license": "MIT",
+  "repository": {
+    "url": "https://github.com/yourssu/Yrano.git",
+    "type": "git",
+    "directory": "packages/prettier-config"
+  },
+  "keywords": [
+    "yourssu",
+    "prettier",
+    "prettier-config"
+  ],
   "peerDependencies": {
     "prettier": ">= 3"
   }
