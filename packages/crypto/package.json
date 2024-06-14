@@ -1,23 +1,25 @@
 {
-  "name": "@yourssu/logging-system-react",
+  "name": "@yourssu/crypto",
   "private": false,
-  "version": "1.1.0",
-  "description": "Yourssu Logging System for React",
+  "version": "0.2.0",
+  "description": "Yourssu Crypto Package",
   "keywords": [
     "yourssu",
-    "loggin system",
-    "react"
+    "crypto"
   ],
   "repository": {
     "type": "git",
     "url": "https://github.com/yourssu/Yrano",
-    "directory": "packages/logging-system"
+    "directory": "packages/crypto"
   },
   "license": "MIT",
   "type": "module",
   "files": [
     "dist"
   ],
+  "publishConfig": {
+    "access": "public"
+  },
   "types": "./dist/index.d.ts",
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",
@@ -33,20 +35,12 @@
       }
     }
   },
-  "publishConfig": {
-    "access": "public"
-  },
   "scripts": {
-    "build": "tsc && tsup"
-  },
-  "peerDependencies": {
-    "axios": "^1.6.4",
-    "react-router-dom": "^6.21.3"
+    "build": "tsc && tsup",
+    "test": "vitest"
   },
   "devDependencies": {
-    "@types/react-router-dom": "^5.3.3",
-    "@yourssu/crypto": "workspace:*",
-    "axios": "^1.6.4",
-    "react-router-dom": "^6.21.3"
+    "@types/crypto-js": "^4.2.2",
+    "crypto-js": "^4.2.0"
   }
 }

@@ -8,7 +8,6 @@ export default defineConfig({
     resolve: true,
   },
   external: ['react', 'react-dom'],
-  noExternal: ['@yourssu/crypto'],
   splitting: false,
   clean: true,
   sourcemap: true,
