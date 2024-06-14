@@ -36,8 +36,6 @@ module.exports = {
   rules: {
     // 리액트 컴포넌트만 export하고 있는지 체크
     'react-refresh/only-export-components': ['warn', { allowConstantExport: true }],
-    // 일관된 함수 유형을 적용하는지 체크 (기명 함수 화살표 컴포넌트)
-    'react/function-component-definition': [2, { namedComponents: 'arrow-function' }],
     // <img> 엘리먼트에 유의미한 대체 텍스트가 있는지 체크
     'jsx-a11y/alt-text': [
       'warn',
