@@ -1,4 +1,4 @@
-import { sha256, base64Encode } from '@yourssu/crypto';
+import { sha256, base64Encode, hexToUtf8 } from '@yourssu/crypto';
 
 import { SetLocalStorage, SetLocalStorageClear } from './SetLocalStorage';
 import { useYLSContext } from './hooks/useYLSContext';
@@ -27,11 +27,9 @@ const createHashedID = (userId: string) => {
     localHashedId = JSON.parse(window.localStorage.getItem('yls-web') as string).hashedId;
   } else if (userId === '') {
     userId = createRandomId();
-  } else {
-    // do nothing
   }
 
-  hashedId = base64Encode(sha256(userId).toString());
+  hashedId = base64Encode(hexToUtf8(sha256(userId)));
 
   return localHashedId ? localHashedId : hashedId;
 };
