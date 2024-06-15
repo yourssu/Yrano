@@ -1,0 +1,15 @@
+{
+  "name": "config-example",
+  "version": "0.1.0",
+  "scripts": {
+    "dev": "vite"
+  },
+  "devDependencies": {
+    "@yourssu/eslint-config": "workspace:*",
+    "@yourssu/prettier-config": "workspace:*",
+    "vite": "^5.2.0",
+    "@vitejs/plugin-react": "^4.3.0",
+    "vite-plugin-dts": "^3.5.3"
+  },
+  "prettier": "@yourssu/prettier-config"
+}
