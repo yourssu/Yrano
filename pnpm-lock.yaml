@@ -24,6 +24,9 @@ importers:
       '@vitest/ui':
         specifier: ^1.6.0
         version: 1.6.0(vitest@1.6.0)
+      '@yourssu/prettier-config':
+        specifier: workspace:*
+        version: link:packages/prettier-config
       eslint:
         specifier: ^8.45.0
         version: 8.57.0
