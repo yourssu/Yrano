@@ -20,6 +20,7 @@ pnpm install @yourssu/eslint-config
 
 - `'prettier/prettier': ['error', { endOfLine: 'auto' }]` : <br/>set the endOfLine rule to 'auto'.
 - `'@typescript-eslint/explicit-function-return-type': 'off'` : <br/>check if return type is written. (To avoid the use of React.FC while using Typescript, set as 'off')
+- `'@typescript-eslint/no-explicit-any': 'warn'` : <br/>reports on explicit uses of the any keyword. (To allow using any in special cases)
 - `'no-relative-import-paths/no-relative-import-paths': [
 'warn',
 { allowSameFolder: true, rootDir: 'src', prefix: '@' },
@@ -28,7 +29,6 @@ pnpm install @yourssu/eslint-config
 ### React rules
 
 - `'react-refresh/only-export-components': ['warn', { allowConstantExport: true }]` : <br/>check if it export React Components only.
-- `'react/function-component-definition': [2, { namedComponents: 'arrow-function' }]` : <br/>check if it uses consistent function type (named arrow-function component)
 - `'jsx-a11y/alt-text': [
 'warn',
 {

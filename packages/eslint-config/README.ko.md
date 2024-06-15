@@ -20,6 +20,7 @@ pnpm install @yourssu/eslint-config
 
 - `'prettier/prettier': ['error', { endOfLine: 'auto' }]` : <br/>개행 방식 auto로 설정
 - `'@typescript-eslint/explicit-function-return-type': 'off'` : <br/>return type 명시했는지 체크 (TS 내에서 React.FC 사용 지양을 위해서 off)
+- `'@typescript-eslint/no-explicit-any': 'warn'` : <br/>any의 명시적 사용에 대해서 보고 (any를 사용해야하는 특수한 경우를 위해서 warn으로 설정)
 - `'no-relative-import-paths/no-relative-import-paths': [
 'warn',
 { allowSameFolder: true, rootDir: 'src', prefix: '@' },
@@ -28,7 +29,6 @@ pnpm install @yourssu/eslint-config
 ### React rules
 
 - `'react-refresh/only-export-components': ['warn', { allowConstantExport: true }]` : <br/>리액트 컴포넌트만 export하고 있는지 체크
-- `'react/function-component-definition': [2, { namedComponents: 'arrow-function' }]` : <br/>일관된 함수 유형을 적용하는지 체크 (기명 함수 화살표 컴포넌트)
 - `'jsx-a11y/alt-text': [
 'warn',
 {
