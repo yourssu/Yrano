@@ -8,13 +8,13 @@ describe('isEmail', () => {
   });
 
   it('should return Error if given value is not valid', () => {
-    expect(isEmail('')).toEqual(false);
-    expect(isEmail('hyeonsu')).toEqual(false);
-    expect(isEmail('1234')).toEqual(false);
-    expect(isEmail('hyeonsu@')).toEqual(false);
-    expect(isEmail('hyeonsu@toss')).toEqual(false);
-    expect(isEmail('hyeonsu@toss.')).toEqual(false);
-    expect(isEmail('hyeonsu@toss.123')).toEqual(false);
-    expect(isEmail('hyeonsu@toss.com123')).toEqual(false);
+    expect(() => isEmail('')).toThrowError('given value is not valid');
+    expect(() => isEmail('stella')).toThrowError('given value is not valid');
+    expect(() => isEmail('1234')).toThrowError('given value is not valid');
+    expect(() => isEmail('stella@')).toThrowError('given value is not valid');
+    expect(() => isEmail('stella@yourssu')).toThrowError('given value is not valid');
+    expect(() => isEmail('stella@yourssu.')).toThrowError('given value is not valid');
+    expect(() => isEmail('stella@yourssu.123')).toThrowError('given value is not valid');
+    expect(() => isEmail('stella@yourssu.com123')).toThrowError('given value is not valid');
   });
 });

@@ -15,5 +15,5 @@ export const isEmail = (email: string, domain?: string) => {
     }
   }
 
-  return false;
+  throw new Error('given value is not valid');
 };
