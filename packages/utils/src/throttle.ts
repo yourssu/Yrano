@@ -5,19 +5,27 @@
  *
  * @param {F} func - The function to throttle.
  * @param {number} throttleMs - The number of milliseconds to throttle executions to.
- * @returns {F} A new throttled function that accepts the same parameters as the original function.
+ * @returns {F & { cancel: () => void }} A new throttled function with a `cancel` method.
  */
-export function throttle<F extends (...args: any[]) => void>(func: F, throttleMs: number): F {
+
+export function throttle<F extends (...args: any[]) => void>(
+  func: F,
+  throttleMs: number
+): F & { cancel: () => void } {
   let lastCallTime: number | null;
 
-  const throttledFunction = function (...args: Parameters<F>) {
+  const throttled = function (...args: Parameters<F>) {
     const now = Date.now();
 
     if (lastCallTime == null || now - lastCallTime >= throttleMs) {
       lastCallTime = now;
       func(...args);
     }
-  } as F;
 
-  return throttledFunction;
+    throttled.cancel = function () {
+      lastCallTime = null;
+    };
+  } as F & { cancel: () => void };
+
+  return throttled;
 }
