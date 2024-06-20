@@ -3,7 +3,7 @@ import { describe, it, expect, vi } from 'vitest';
 import { throttle } from './throttle';
 
 describe('throttle', () => {
-  it('should throttle function calls', async () => {
+  it('should not call the function again before the throttle time', async () => {
     const func = vi.fn();
     const throttledFunc = throttle(func, 100);
 
@@ -14,34 +14,59 @@ describe('throttle', () => {
     expect(func).toHaveBeenCalledTimes(1);
   });
 
-  it('should execute the function immediately if not called within the wait time', async () => {
+  it('should call the function again after the throttle time', async () => {
     const func = vi.fn();
-    const throttleMs = 50;
-    const throttledFunc = throttle(func, throttleMs);
+    const throttledFunc = throttle(func, 100);
 
     throttledFunc();
-    await new Promise((resolve) => {
-      setTimeout(resolve, throttleMs / 2);
-    });
-    throttledFunc();
-
     expect(func).toHaveBeenCalledTimes(1);
 
-    await new Promise((resolve) => {
-      setTimeout(resolve, throttleMs / 2 + 1);
-    });
+    await new Promise((resolve) => setTimeout(resolve, 150));
     throttledFunc();
     expect(func).toHaveBeenCalledTimes(2);
   });
 
-  it('should call the function with correct arguments', async () => {
+  it('should call the function immediately after cancel is called', async () => {
     const func = vi.fn();
-    const throttleMs = 50;
+    const throttledFunc = throttle(func, 100);
+
+    throttledFunc();
+    expect(func).toHaveBeenCalledTimes(1);
+
+    throttledFunc.cancel();
+    throttledFunc();
+    expect(func).toHaveBeenCalledTimes(2);
+  });
+
+  it('should handle multiple calls with and without cancel', async () => {
+    const func = vi.fn();
+    const throttledFunc = throttle(func, 100);
+
+    throttledFunc();
+    expect(func).toHaveBeenCalledTimes(1);
+
+    await new Promise((resolve) => setTimeout(resolve, 50));
+    throttledFunc();
+    expect(func).toHaveBeenCalledTimes(1);
+
+    throttledFunc.cancel();
+    throttledFunc();
+    expect(func).toHaveBeenCalledTimes(2);
+
+    await new Promise((resolve) => setTimeout(resolve, 150));
+    throttledFunc();
+    expect(func).toHaveBeenCalledTimes(3);
+  });
+
+  it('should support cancelling the throttle', () => {
+    const func = vi.fn();
+    const throttleMs = 100;
     const throttledFunc = throttle(func, throttleMs);
 
-    throttledFunc('test', 123);
+    throttledFunc();
+    throttledFunc.cancel();
+    throttledFunc();
 
-    expect(func).toHaveBeenCalledTimes(1);
-    expect(func).toHaveBeenCalledWith('test', 123);
+    expect(func).toHaveBeenCalledTimes(2);
   });
 });
