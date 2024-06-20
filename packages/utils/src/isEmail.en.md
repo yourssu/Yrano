@@ -11,7 +11,7 @@ Check if the email address conforms to the RFC 5322 standard and return into the
 
 ## 반환값
 
-- If email address or set of email id and domain that conforms the standard, returns the 
+- If email address or set of email id and domain that conforms the standard is entered, returns the 
 correct email format. 
 - If not, returns the error.
 
