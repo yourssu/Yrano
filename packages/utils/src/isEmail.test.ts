@@ -16,5 +16,10 @@ describe('isEmail', () => {
     expect(() => isEmail('stella@yourssu.')).toThrowError('given value is not valid');
     expect(() => isEmail('stella@yourssu.123')).toThrowError('given value is not valid');
     expect(() => isEmail('stella@yourssu.com123')).toThrowError('given value is not valid');
+    expect(() => isEmail('stella')).toThrowError('given value is not valid');
+    expect(() => isEmail('', '@naver.com')).toThrowError('given value is not valid');
+    expect(() => isEmail('@naver.com')).toThrowError('given value is not valid');
+    expect(() => isEmail('stella', '@yourssu.com123')).toThrowError('given value is not valid');
+    expect(() => isEmail('stella', '@yourssu')).toThrowError('given value is not valid');
   });
 });
