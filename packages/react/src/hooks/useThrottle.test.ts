@@ -1,5 +1,4 @@
 import { renderHook, act } from '@testing-library/react';
-import { throttle } from '@yourssu/utils';
 import { describe, it, expect, vi } from 'vitest';
 
 import { useThrottle } from './useThrottle';
