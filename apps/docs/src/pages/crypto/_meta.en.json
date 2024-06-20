@@ -1,0 +1,5 @@
+{
+  "base64Encode": "base64Encode",
+  "hexToUtf8": "hexToUtf8",
+  "sha256": "sha256"
+}
