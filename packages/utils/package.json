@@ -39,7 +39,7 @@
     "build": "tsc && tsup",
     "test": "vitest"
   },
-  "dependencies": {
+  "devDependencies": {
     "date-fns": "^3.6.0",
     "@types/node": "^20.14.2"
   }
