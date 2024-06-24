@@ -1,7 +1,8 @@
-import { createContext } from 'react';
+import { createContext, useEffect } from 'react';
 
 import { createAxiosInstance } from '@/apis/createAxiosInstance';
-import { LogRequestList, LogResponse } from '@/types/LogType';
+import { LogRequestList, LogResponse, LogType } from '@/types/LogType';
+import { SetLocalStorageClear } from '@/SetLocalStorage';
 
 interface YLSProviderProps {
   children: React.ReactNode;
@@ -31,6 +32,32 @@ export const YLSProvider = ({ children, baseURL }: YLSProviderProps) => {
       throw new Error('Failed to post log');
     }
   };
+
+  useEffect(() => {
+    const handleUnload = async (event: Event) => {
+      event.preventDefault();
+
+      const logList: LogType[] = JSON.parse(localStorage.getItem('yls-web') as string) || [];
+      const req: LogRequestList = {
+        logRequestList: logList,
+      };
+
+      try {
+        const res = await postLog(req);
+        if (res.success) {
+          SetLocalStorageClear();
+        }
+      } catch (e) {
+        console.error('Failed to post log');
+      }
+    };
+
+    window.addEventListener('unload', handleUnload);
+
+    return () => {
+      window.removeEventListener('unload', handleUnload);
+    };
+  }, []);
 
   return (
     <YLSContext.Provider
