@@ -40,6 +40,7 @@
     "test": "vitest"
   },
   "devDependencies": {
-    "@types/node": "^20.14.2"
+    "@types/node": "^20.14.2",
+    "date-fns": "^3.6.0"
   }
 }
