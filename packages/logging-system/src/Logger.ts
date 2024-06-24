@@ -1,7 +1,7 @@
 import { sha256, base64Encode, hexToUtf8 } from '@yourssu/crypto';
 
 import { SetLocalStorage } from './SetLocalStorage';
-import { useYLSContext } from './hooks/useYLSContext.tsx';
+import { useYLSContext } from './hooks/useYLSContext';
 import { LogPayloadParams, LogRequestList, LogResponse } from './types/LogType';
 
 const createRandomId = () => {
