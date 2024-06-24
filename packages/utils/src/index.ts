@@ -3,3 +3,4 @@ export { hasNumberOrEnglishOrHangulOrSpace } from './hasNumberOrEnglishOrHangulO
 export { debounce } from './debounce.ts';
 export { throttle } from './throttle.ts';
 export { formatYYYYMMDDHHMM } from './formatYYYYMMDDHHMM.ts';
+export { isEmail } from './isEmail.ts';
