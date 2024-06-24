@@ -25,7 +25,7 @@ const createHashedID = (userId: string) => {
 
   if (userId === '') {
     if (existLocalHashedId) {
-      localHashedId = JSON.parse(window.localStorage.getItem('yls-web') as string).hashedId;
+      localHashedId = JSON.parse(existLocalHashedId).hashedId;
     } else {
       userId = createRandomId();
     }
