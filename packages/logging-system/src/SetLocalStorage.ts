@@ -29,7 +29,7 @@ export const SetLocalStorage = async (
           SetLocalStorageClear();
         }
       } catch (e) {
-        console.error('Failed to post log');
+        console.error(e);
       }
     }
   }

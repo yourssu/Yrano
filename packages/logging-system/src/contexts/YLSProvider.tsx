@@ -48,7 +48,7 @@ export const YLSProvider = ({ children, baseURL }: YLSProviderProps) => {
           SetLocalStorageClear();
         }
       } catch (e) {
-        console.error('Failed to post log');
+        console.error(e);
       }
     };
 
