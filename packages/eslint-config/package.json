@@ -15,6 +15,7 @@
     "eslint-config"
   ],
   "private": false,
+  "access": "public",
   "dependencies": {
     "@rushstack/eslint-config": "^3.6.10",
     "@rushstack/eslint-patch": "1.10.1",
