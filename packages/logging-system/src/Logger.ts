@@ -46,7 +46,7 @@ const initialLog = (
   userId: string,
   version: number,
   event: LogPayloadParams['event'],
-  postLog: (data: LogRequestList) => Promise<LogResponse>
+  putLog: (data: LogRequestList) => Promise<LogResponse>
 ) => {
   const loggerType: LogPayloadParams = {
     userId: userId,
@@ -56,18 +56,18 @@ const initialLog = (
 
   const logger = Logger(loggerType);
 
-  SetLocalStorage(logger, postLog);
+  SetLocalStorage(logger, putLog);
 };
 
 export const useYLSLogger = () => {
-  const { postLog } = useYLSContext();
+  const { putLog } = useYLSContext();
 
   const screen = ({ userId, version, event }: LogPayloadParams) => {
-    initialLog(userId, version, event, postLog);
+    initialLog(userId, version, event, putLog);
   };
 
   const click = ({ userId, version, event }: LogPayloadParams) => {
-    initialLog(userId, version, event, postLog);
+    initialLog(userId, version, event, putLog);
   };
 
   return {
@@ -91,14 +91,14 @@ export const Logger = ({ userId, version, event }: LogPayloadParams) => {
 window.addEventListener('unload', async (event) => {
   event.preventDefault();
 
-  const { postLog } = useYLSContext();
+  const { putLog } = useYLSContext();
   const logList: LogType[] = JSON.parse(localStorage.getItem('yls-web') as string) || [];
   const req: LogRequestList = {
     logRequestList: logList,
   };
 
   try {
-    const res = await postLog(req);
+    const res = await putLog(req);
     if (res.success) {
       SetLocalStorageClear();
     }
