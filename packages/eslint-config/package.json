@@ -1,6 +1,6 @@
 {
   "name": "@yourssu/eslint-config",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "Yourssu Eslint Config",
   "main": "index.js",
   "license": "MIT",
@@ -15,6 +15,9 @@
     "eslint-config"
   ],
   "private": false,
+  "publishConfig": {
+    "access": "public"
+  },
   "dependencies": {
     "@rushstack/eslint-config": "^3.6.10",
     "@rushstack/eslint-patch": "1.10.1",

@@ -9,7 +9,7 @@ interface YLSProviderProps {
 }
 
 export interface YLSContextType {
-  postLog: (data: LogRequestList) => Promise<LogResponse>;
+  putLog: (data: LogRequestList) => Promise<LogResponse>;
 }
 
 export const YLSContext = createContext<YLSContextType | undefined>(undefined);
@@ -23,7 +23,7 @@ export const YLSContext = createContext<YLSContextType | undefined>(undefined);
 export const YLSProvider = ({ children, baseURL }: YLSProviderProps) => {
   const axiosInstance = createAxiosInstance(baseURL);
 
-  const postLog = async (data: LogRequestList): Promise<LogResponse> => {
+  const putLog = async (data: LogRequestList): Promise<LogResponse> => {
     try {
       const res = await axiosInstance.put('/log/list', data);
       return res.data;
@@ -35,7 +35,7 @@ export const YLSProvider = ({ children, baseURL }: YLSProviderProps) => {
   return (
     <YLSContext.Provider
       value={{
-        postLog,
+        putLog,
       }}
     >
       {children}

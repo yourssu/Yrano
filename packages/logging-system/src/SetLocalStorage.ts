@@ -7,7 +7,7 @@ export const SetLocalStorageClear = () => {
 
 export const SetLocalStorage = async (
   logger: LogType,
-  postLog: (data: LogRequestList) => Promise<LogResponse>
+  putLog: (data: LogRequestList) => Promise<LogResponse>
 ) => {
   if (window.localStorage.getItem('yls-web') == undefined) {
     const list: any[] = [];
@@ -24,7 +24,7 @@ export const SetLocalStorage = async (
       };
 
       try {
-        const res = await postLog(req);
+        const res = await putLog(req);
         if (res.success) {
           SetLocalStorageClear();
         }
