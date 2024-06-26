@@ -14,7 +14,9 @@
     "prettier",
     "prettier-config"
   ],
-  "access": "public",
+  "publishConfig": {
+    "access": "public"
+  },
   "peerDependencies": {
     "prettier": ">= 3"
   }
