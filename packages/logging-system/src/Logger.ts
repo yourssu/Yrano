@@ -1,8 +1,8 @@
 import { sha256, base64Encode, hexToUtf8 } from '@yourssu/crypto';
 
-import { SetLocalStorage, SetLocalStorageClear } from './SetLocalStorage';
+import { SetLocalStorage } from './SetLocalStorage';
 import { useYLSContext } from './hooks/useYLSContext';
-import { LogPayloadParams, LogRequestList, LogResponse, LogType } from './types/LogType';
+import { LogPayloadParams, LogRequestList, LogResponse } from './types/LogType';
 
 const createRandomId = () => {
   let randomId = '';
@@ -87,22 +87,3 @@ export const Logger = ({ userId, version, event }: LogPayloadParams) => {
     },
   };
 };
-
-window.addEventListener('unload', async (event) => {
-  event.preventDefault();
-
-  const { putLog } = useYLSContext();
-  const logList: LogType[] = JSON.parse(localStorage.getItem('yls-web') as string) || [];
-  const req: LogRequestList = {
-    logRequestList: logList,
-  };
-
-  try {
-    const res = await putLog(req);
-    if (res.success) {
-      SetLocalStorageClear();
-    }
-  } catch (e) {
-    console.error('Failed to post log');
-  }
-});
