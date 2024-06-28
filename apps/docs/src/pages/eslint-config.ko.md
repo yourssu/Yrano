@@ -73,8 +73,6 @@ elements: ['img'],
 **.eslintrc.js**
 
 ```
-require('@yourssu/eslint-config/patch');
-
 module.exports = {
   '@yourssu/eslint-config', // 공통 ESLint 컨피그 불러오기
   parserOptions: { tsconfigRootDir: __dirname }
@@ -89,8 +87,6 @@ module.exports = {
 **.eslintrc.js**
 
 ```
-require('@yourssu/eslint-config/patch');
-
 module.exports = {
   '@yourssu/eslint-config', // 공통 ESLint 컨피그 불러오기
   '@yourssu/eslint-config/mixins/react', // React용 ESLint 컨피그 불러오기

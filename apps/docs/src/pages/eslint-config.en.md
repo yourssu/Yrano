@@ -73,8 +73,6 @@ elements: ['img'],
 **.eslintrc.js**
 
 ```
-require('@yourssu/eslint-config/patch');
-
 module.exports = {
   '@yourssu/eslint-config', // require general ESLint config
   parserOptions: { tsconfigRootDir: __dirname }
@@ -90,8 +88,6 @@ module.exports = {
 **.eslintrc.js**
 
 ```
-require('@yourssu/eslint-config/patch');
-
 module.exports = {
   '@yourssu/eslint-config', // require general ESLint config
   '@yourssu/eslint-config/mixins/react', // require React ESLint config
