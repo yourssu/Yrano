@@ -1,5 +1,8 @@
 {
   "useInterval": "useInterval",
   "useMediaQuery": "useMediaQuery",
-  "useSecTimer": "useSecTimer"
+  "useSecTimer": "useSecTimer",
+  "usePreventDuplicateClick": "usePreventDuplicateClick",
+  "useDebounce": "useDebounce",
+  "useThrottle": "useThrottle"
 }
