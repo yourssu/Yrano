@@ -3,23 +3,23 @@ import { isEmail } from './isEmail';
 
 describe('isEmail', () => {
   it('should return full Email if given value is valid', () => {
-    expect(isEmail('stella@yourssu.com')).toEqual('stella@yourssu.com');
-    expect(isEmail('stella', '@yourssu.com')).toEqual('stella@yourssu.com');
+    expect(isEmail('stella@yourssu.com')).toEqual(true);
+    expect(isEmail('stella', '@yourssu.com')).toEqual(true);
   });
 
   it('should return Error if given value is not valid', () => {
-    expect(() => isEmail('')).toThrowError('given value is not valid');
-    expect(() => isEmail('stella')).toThrowError('given value is not valid');
-    expect(() => isEmail('1234')).toThrowError('given value is not valid');
-    expect(() => isEmail('stella@')).toThrowError('given value is not valid');
-    expect(() => isEmail('stella@yourssu')).toThrowError('given value is not valid');
-    expect(() => isEmail('stella@yourssu.')).toThrowError('given value is not valid');
-    expect(() => isEmail('stella@yourssu.123')).toThrowError('given value is not valid');
-    expect(() => isEmail('stella@yourssu.com123')).toThrowError('given value is not valid');
-    expect(() => isEmail('stella')).toThrowError('given value is not valid');
-    expect(() => isEmail('', '@naver.com')).toThrowError('given value is not valid');
-    expect(() => isEmail('@naver.com')).toThrowError('given value is not valid');
-    expect(() => isEmail('stella', '@yourssu.com123')).toThrowError('given value is not valid');
-    expect(() => isEmail('stella', '@yourssu')).toThrowError('given value is not valid');
+    expect(isEmail('')).toEqual(false);
+    expect(isEmail('stella')).toEqual(false);
+    expect(isEmail('1234')).toEqual(false);
+    expect(isEmail('stella@')).toEqual(false);
+    expect(isEmail('stella@yourssu')).toEqual(false);
+    expect(isEmail('stella@yourssu.')).toEqual(false);
+    expect(isEmail('stella@yourssu.123')).toEqual(false);
+    expect(isEmail('stella@yourssu.com123')).toEqual(false);
+    expect(isEmail('stella')).toEqual(false);
+    expect(isEmail('', '@naver.com')).toEqual(false);
+    expect(isEmail('@naver.com')).toEqual(false);
+    expect(isEmail('stella', '@yourssu.com123')).toEqual(false);
+    expect(isEmail('stella', '@yourssu')).toEqual(false);
   });
 });
