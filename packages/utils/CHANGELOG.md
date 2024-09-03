@@ -1,5 +1,11 @@
 # @yourssu/utils
 
+## 0.5.1
+
+### Patch Changes
+
+- chnage to bulid version
+
 ## 0.5.0
 
 ### Minor Changes
