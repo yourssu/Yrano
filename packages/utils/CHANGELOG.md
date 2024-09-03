@@ -1,5 +1,11 @@
 # @yourssu/utils
 
+## 0.4.0
+
+### Minor Changes
+
+- d63976a: change isEmail to return boolean value
+
 ## 0.3.0
 
 ### Minor Changes
