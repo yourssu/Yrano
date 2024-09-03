@@ -1,5 +1,11 @@
 # @yourssu/utils
 
+## 0.5.0
+
+### Minor Changes
+
+- f84a7ae: change hasNumberOrEnglishOrHangulOrSpace regex
+
 ## 0.4.0
 
 ### Minor Changes
