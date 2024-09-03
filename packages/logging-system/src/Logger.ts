@@ -19,21 +19,21 @@ const createRandomId = () => {
 };
 
 const createHashedID = (userId: string) => {
-  let hashedId = '';
-  let localHashedId = '';
-  const existLocalHashedId = window.localStorage.getItem('yls-web');
+  const existLocalHashedId = window.sessionStorage.getItem('yls-web-hashedId');
 
   if (userId === '') {
     if (existLocalHashedId) {
-      localHashedId = JSON.parse(window.localStorage.getItem('yls-web') as string).hashedId;
+      return existLocalHashedId;
     } else {
       userId = createRandomId();
     }
   }
 
-  hashedId = base64Encode(hexToUtf8(sha256(userId)));
+  const hashId = base64Encode(hexToUtf8(sha256(userId)));
 
-  return localHashedId ? localHashedId : hashedId;
+  window.sessionStorage.setItem('yls-web-hashedId', hashId);
+
+  return hashId;
 };
 
 const createTimestamp = () => {
