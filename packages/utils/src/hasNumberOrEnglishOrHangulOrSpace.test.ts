@@ -41,6 +41,8 @@ describe('hasNumberOrEnglishOrHangulOrSpace', () => {
 
   it('should return false for a string with non-Hangul, non-English letters', () => {
     expect(hasNumberOrEnglishOrHangulOrSpace('abc123漢字')).toBe(false);
+    expect(hasNumberOrEnglishOrHangulOrSpace('민제@에요')).toBe(false);
+    expect(hasNumberOrEnglishOrHangulOrSpace('민제|에요')).toBe(false);
   });
 
   it('should return false for an empty string', () => {

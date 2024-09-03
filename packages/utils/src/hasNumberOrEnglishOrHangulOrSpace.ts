@@ -6,4 +6,4 @@
  *          그렇지 않으면 false를 반환합니다.
  */
 export const hasNumberOrEnglishOrHangulOrSpace = (value: string) =>
-  /[A-Za-z가-힣ㄱ-ㅎㅏ-ㅣ\d\s]+$/.test(value);
+  /^[A-Za-z가-힣ㄱ-ㅎㅏ-ㅣ._\d\s]+$/.test(value);
