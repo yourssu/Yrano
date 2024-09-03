@@ -11,5 +11,6 @@
     "@vitejs/plugin-react": "^4.3.0",
     "vite-plugin-dts": "^3.5.3"
   },
-  "prettier": "@yourssu/prettier-config"
+  "prettier": "@yourssu/prettier-config",
+  "private": "true"
 }
