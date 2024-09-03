@@ -1,5 +1,11 @@
 # @yourssu/utils
 
+## 0.3.0
+
+### Minor Changes
+
+- e62889e: add debounce, throttle, formatYYYYMMDDHHMM and isEmail
+
 ## 0.2.1
 
 ### Patch Changes
