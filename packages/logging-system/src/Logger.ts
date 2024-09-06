@@ -18,22 +18,18 @@ const createRandomId = () => {
   return randomId;
 };
 
-const createHashedID = (userId: string) => {
+const createHashedId = (userId: string) => {
   const existLocalHashedId = window.sessionStorage.getItem('yls-web-hashedId');
 
-  if (userId === '') {
-    if (existLocalHashedId) {
-      return existLocalHashedId;
-    } else {
-      userId = createRandomId();
-    }
-  }
+  if (userId === '' && existLocalHashedId) return existLocalHashedId;
 
-  const hashId = base64Encode(hexToUtf8(sha256(userId)));
+  if (userId === '') userId = createRandomId();
 
-  window.sessionStorage.setItem('yls-web-hashedId', hashId);
+  const hashedId = base64Encode(hexToUtf8(sha256(userId)));
 
-  return hashId;
+  window.sessionStorage.setItem('yls-web-hashedId', hashedId);
+
+  return hashedId;
 };
 
 const createTimestamp = () => {
@@ -78,7 +74,7 @@ export const useYLSLogger = () => {
 
 export const Logger = ({ userId, version, event }: LogPayloadParams) => {
   return {
-    hashedID: createHashedID(userId),
+    hashedID: createHashedId(userId),
     timestamp: createTimestamp(),
     version: version,
     event: {
