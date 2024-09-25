@@ -1,8 +1,10 @@
 import { LogRequestList, LogResponse, LogType } from './types/LogType';
 
-export const SetLocalStorageClear = () => {
-  const list: any[] = [];
-  localStorage.setItem('yls-web', JSON.stringify(list));
+const logSize = 10;
+
+export const SetLocalStorageSlice = () => {
+  const list: LogType[] = JSON.parse(localStorage.getItem('yls-web') as string) || [];
+  localStorage.setItem('yls-web', JSON.stringify(list.slice(logSize, list.length)));
 };
 
 export const SetLocalStorage = async (
@@ -13,16 +15,21 @@ export const SetLocalStorage = async (
   list.push(logger);
   localStorage.setItem('yls-web', JSON.stringify(list));
 
-  if (list.length >= 10) {
+  const slicingList = list.slice(0, logSize);
+
+  if (list.length >= logSize) {
     const req: LogRequestList = {
-      logRequestList: list,
+      logRequestList: slicingList,
     };
-    SetLocalStorageClear();
+    SetLocalStorageSlice();
 
     try {
       await putLog(req);
     } catch (e) {
       console.error('Failed to post log');
+      const remainList: LogType[] = JSON.parse(localStorage.getItem('yls-web') as string) || [];
+      remainList.unshift(...slicingList);
+      localStorage.setItem('yls-web', JSON.stringify(remainList));
     }
   }
 };
