@@ -1,5 +1,11 @@
 # @yourssu/logging-system-react
 
+## 1.1.3
+
+### Patch Changes
+
+- 6ba3c71: Correction of non-member hash related errors
+
 ## 1.1.2
 
 ### Patch Changes
