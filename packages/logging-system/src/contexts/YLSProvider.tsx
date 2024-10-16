@@ -1,7 +1,11 @@
-import { createContext } from 'react';
+import { createContext, useEffect } from 'react';
 
 import { createAxiosInstance } from '@/apis/createAxiosInstance';
 import { LogRequestList, LogResponse } from '@/types/LogType';
+import { LogType } from '@/types/LogType';
+import http from 'http';
+import https from 'https';
+import { SetLocalStorageClear } from '@/SetLocalStorage';
 
 interface YLSProviderProps {
   children: React.ReactNode;
@@ -31,6 +35,26 @@ export const YLSProvider = ({ children, baseURL }: YLSProviderProps) => {
       throw new Error('Failed to post log');
     }
   };
+
+  useEffect(() => {
+    const handleVisibilityChange = async () => {
+      if (document.visibilityState === 'visible') return;
+
+      const logList: LogType[] = JSON.parse(localStorage.getItem('yls-web') as string) || [];
+      const data: LogRequestList = {
+        logRequestList: logList,
+      };
+
+      SetLocalStorageClear();
+
+      await axiosInstance.put('/log/list', data, {
+        httpAgent: new http.Agent({ keepAlive: true }),
+        httpsAgent: new https.Agent({ keepAlive: true }),
+      });
+    };
+
+    document.addEventListener('visibilitychange', handleVisibilityChange, { once: true });
+  });
 
   return (
     <YLSContext.Provider
