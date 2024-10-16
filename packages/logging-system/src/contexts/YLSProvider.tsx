@@ -37,7 +37,7 @@ export const YLSProvider = ({ children, baseURL }: YLSProviderProps) => {
   };
 
   useEffect(() => {
-    const handleVisibilityChange = async () => {
+    const handleVisibilityChange = () => {
       if (document.visibilityState === 'visible') return;
 
       const logList: LogType[] = JSON.parse(localStorage.getItem('yls-web') as string) || [];
@@ -47,7 +47,7 @@ export const YLSProvider = ({ children, baseURL }: YLSProviderProps) => {
 
       SetLocalStorageClear();
 
-      await axiosInstance.put('/log/list', data, {
+      void axiosInstance.put('/log/list', data, {
         httpAgent: new http.Agent({ keepAlive: true }),
         httpsAgent: new https.Agent({ keepAlive: true }),
       });
