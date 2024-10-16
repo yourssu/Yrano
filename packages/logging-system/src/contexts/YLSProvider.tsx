@@ -53,7 +53,11 @@ export const YLSProvider = ({ children, baseURL }: YLSProviderProps) => {
       });
     };
 
-    document.addEventListener('visibilitychange', handleVisibilityChange, { once: true });
+    document.addEventListener('visibilitychange', handleVisibilityChange);
+
+    return () => {
+      document.removeEventListener('visibilitychange', handleVisibilityChange);
+    };
   }, []);
 
   return (
