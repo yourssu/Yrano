@@ -54,7 +54,7 @@ export const YLSProvider = ({ children, baseURL }: YLSProviderProps) => {
     };
 
     document.addEventListener('visibilitychange', handleVisibilityChange, { once: true });
-  });
+  }, []);
 
   return (
     <YLSContext.Provider
