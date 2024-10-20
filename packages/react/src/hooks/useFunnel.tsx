@@ -47,10 +47,14 @@ export const useFunnel = <Steps extends readonly string[]>({
       if (!isFunnelStep(child)) return false;
       return child.props.name === currentStep;
     }) as StepElementType<Steps[number]> | undefined;
-
-    return targetStep;
+  
+    return targetStep || null;
   };
 
-  const setStep = setCurrentStep;
-  return [Object.assign(Funnel, { Step }), next, prev, setStep] as const;
+  return {
+    Funnel: Object.assign(Funnel, { Step }),
+    next,
+    prev,
+    setStep : setCurrentStep,
+  };
 };
