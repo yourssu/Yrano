@@ -1,5 +1,6 @@
 {
   "useInterval": "useInterval",
   "useMediaQuery": "useMediaQuery",
-  "useSecTimer": "useSecTimer"
+  "useSecTimer": "useSecTimer",
+  "useFunnel": "useFunnel"
 }
