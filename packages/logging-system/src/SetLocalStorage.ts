@@ -1,10 +1,8 @@
 import { LogRequestList, LogResponse, LogType } from './types/LogType';
 
-const logSize = 10;
-
-export const SetLocalStorageSlice = () => {
-  const list: LogType[] = JSON.parse(localStorage.getItem('yls-web') as string) || [];
-  localStorage.setItem('yls-web', JSON.stringify(list.slice(logSize, list.length)));
+export const SetLocalStorageClear = () => {
+  const list: LogType[] = [];
+  localStorage.setItem('yls-web', JSON.stringify(list));
 };
 
 export const SetLocalStorage = async (
@@ -15,21 +13,18 @@ export const SetLocalStorage = async (
   list.push(logger);
   localStorage.setItem('yls-web', JSON.stringify(list));
 
-  const slicingList = list.slice(0, logSize);
+  const req: LogRequestList = {
+    logRequestList: list,
+  };
 
-  if (list.length >= logSize) {
-    const req: LogRequestList = {
-      logRequestList: slicingList,
-    };
-    SetLocalStorageSlice();
+  SetLocalStorageClear();
 
-    try {
-      await putLog(req);
-    } catch (e) {
-      console.error('Failed to post log');
-      const remainList: LogType[] = JSON.parse(localStorage.getItem('yls-web') as string) || [];
-      remainList.unshift(...slicingList);
-      localStorage.setItem('yls-web', JSON.stringify(remainList));
-    }
+  try {
+    await putLog(req);
+  } catch (e) {
+    console.error('Failed to post log');
+    const remainList: LogType[] = JSON.parse(localStorage.getItem('yls-web') as string) || [];
+    remainList.unshift(...list);
+    localStorage.setItem('yls-web', JSON.stringify(remainList));
   }
 };
