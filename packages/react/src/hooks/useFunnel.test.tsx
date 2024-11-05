@@ -7,10 +7,9 @@ import '@testing-library/jest-dom';
 const steps = ['Step1', 'Step2', 'Step3'] as const;
 
 describe('useFunnel', () => {
-
   it('올바른 initialStep이 랜더링', () => {
     const TestComponent = () => {
-      const { Funnel, next } = useFunnel({
+      const [Funnel, { next }] = useFunnel({
         initialStep: 'Step2',
         steps,
       });
@@ -35,13 +34,12 @@ describe('useFunnel', () => {
 
     const { getByText } = render(<TestComponent />);
 
-
     expect(getByText('Content of Step2')).toBeInTheDocument();
   });
 
   it('next 함수 호출 시 다음 스텝으로 이동', () => {
     const TestComponent = () => {
-      const { Funnel, next } = useFunnel({
+      const [Funnel, { next }] = useFunnel({
         initialStep: 'Step1',
         steps,
       });
@@ -76,7 +74,7 @@ describe('useFunnel', () => {
 
   it('prev 함수 호출 시 이전 스텝으로 이동', () => {
     const TestComponent = () => {
-      const { Funnel, next, prev } = useFunnel({
+      const [Funnel, { next, prev }] = useFunnel({
         initialStep: 'Step2',
         steps,
       });
@@ -112,7 +110,7 @@ describe('useFunnel', () => {
 
   it('첫번째 스텝에서 prev 함수 호출 시 이전 스텝으로 이동하지 않음', () => {
     const TestComponent = () => {
-      const { Funnel, prev } = useFunnel({
+      const [ Funnel, {prev} ] = useFunnel({
         initialStep: 'Step1',
         steps,
       });
