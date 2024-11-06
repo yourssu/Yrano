@@ -13,18 +13,20 @@ export const SetLocalStorage = async (
   list.push(logger);
   localStorage.setItem('yls-web', JSON.stringify(list));
 
-  const req: LogRequestList = {
-    logRequestList: list,
-  };
+  if (list.length >= 10) {
+    const req: LogRequestList = {
+      logRequestList: list,
+    };
 
-  SetLocalStorageClear();
+    SetLocalStorageClear();
 
-  try {
-    await putLog(req);
-  } catch (e) {
-    console.error('Failed to post log');
-    const remainList: LogType[] = JSON.parse(localStorage.getItem('yls-web') as string) || [];
-    remainList.unshift(...list);
-    localStorage.setItem('yls-web', JSON.stringify(remainList));
+    try {
+      await putLog(req);
+    } catch (e) {
+      console.error('Failed to post log');
+      const remainList: LogType[] = JSON.parse(localStorage.getItem('yls-web') as string) || [];
+      remainList.unshift(...list);
+      localStorage.setItem('yls-web', JSON.stringify(remainList));
+    }
   }
 };
