@@ -3,8 +3,6 @@ import { createContext, useEffect } from 'react';
 import { createAxiosInstance } from '@/apis/createAxiosInstance';
 import { LogRequestList, LogResponse } from '@/types/LogType';
 import { LogType } from '@/types/LogType';
-import http from 'http';
-import https from 'https';
 import { SetLocalStorageClear } from '@/SetLocalStorage';
 
 interface YLSProviderProps {
@@ -47,10 +45,7 @@ export const YLSProvider = ({ children, baseURL }: YLSProviderProps) => {
 
       SetLocalStorageClear();
 
-      void axiosInstance.put('/log/list', data, {
-        httpAgent: new http.Agent({ keepAlive: true }),
-        httpsAgent: new https.Agent({ keepAlive: true }),
-      });
+      void axiosInstance.put('/log/list', data);
     };
 
     document.addEventListener('visibilitychange', handleVisibilityChange);

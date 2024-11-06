@@ -44,10 +44,9 @@
     "react-router-dom": "^6.21.3"
   },
   "devDependencies": {
-    "@types/node": "^22.7.5",
     "@types/react-router-dom": "^5.3.3",
     "@yourssu/crypto": "workspace:*",
-    "axios": "^1.6.4",
+    "axios": "^1.7.7",
     "react-router-dom": "^6.21.3"
   }
 }
